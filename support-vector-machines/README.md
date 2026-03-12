@@ -1,0 +1,2 @@
+# Support Vector Machines (SVM) in Regression Tasks
+This notebook explores how to use Support Vector Machines (SVM) for regression tasks. SVM is a powerful machine learning algorithm that can be used for both classification and regression problems. In regression tasks, SVM aims to find a function that deviates from the actual observed targets by a value no greater than a specified margin (epsilon) for all training data, while also being as flat as possible.
