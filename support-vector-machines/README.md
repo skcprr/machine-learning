@@ -36,7 +36,7 @@ So the optimization task can be formulated as:
 
 $$
 \underset{\textbf{w},b}{\min} 
-\Bigl\{ \frac{1}{2}\|\textbf{w}\|^2\Bigl\}\\
+\{ \frac{1}{2}\|\textbf{w}\|^2\}\\
 \text{subject to:} \\ y_i\left(\mathbf{w}^T\mathbf{x_i} + b \right)\geq 1, \forall i\in \{1,\ldots, n\}.
 $$
 
@@ -46,7 +46,7 @@ In the cases where the traning data is not linearly separable the parameter $\ze
 
 $$
 \underset{\textbf{w},b, \zeta}{\min} 
-\Bigl\{ \frac{1}{2}\|\textbf{w}\|^2 + C\sum_i^n\zeta_i \Bigl\}\\
+\{ \frac{1}{2}\|\textbf{w}\|^2 + C\sum_i^n\zeta_i \}\\
 \text{subject to:} \\ y_i\left(\mathbf{w}^T\mathbf{x_i} + b \right)\geq 1 - \zeta_i,  \zeta_i \geq 0,  \forall i\in \{1,\ldots, n\}.
 $$
 Hyperparameter $C$ defines trade-off between increasing the margin width and ensuring that $\mathbf{x_i}$ lies on the correct side of the margin.
