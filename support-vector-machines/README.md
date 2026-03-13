@@ -56,3 +56,40 @@ $$
 $$
 
 Hyperparameter $C$ defines trade-off between increasing the margin width and ensuring that $\mathbf{x_i}$ lies on the correct side of the margin.
+
+As shown in the figure, bigger value of hyperparameter $C$ decreases the margin, while for small values of $C$, the margin is wider.
+
+<img width="969" height="448" alt="Image" src="https://github.com/user-attachments/assets/86271a93-0ebe-48b5-8259-bc3fa21fec58" />
+
+## Nonlinear SVM
+
+It is often the case that the data is not linearly separable in such a way that a linear hyperplane fails regardless of the margin settings.
+
+The main idea is to map original data from lower-dimensional space into a higher-dimensional space where a linear separation is possible.
+Let's define a mapping function $\phi(\mathbf{x})$, the optimization problem involves the dot product of the transformed vectors:  
+
+$$
+\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j),
+$$
+
+but calculating these transformations explicitly could be computationally expensive.
+
+
+### Kernel Trick
+
+The **Kernel Trick** allows the calculation of the dot product in the high-dimensional space without performing the transformation $\phi$.
+The dot product is replaced with a **Kernel Function $K(x_i, x_j)$**:
+
+$$
+K(\mathbf{x_i},\mathbf{x_j}) = \phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j).
+$$
+
+Some common kernels include:
+
+- ___Polynomial___: $K(\mathbf{x_i},\mathbf{x_j}) = (\mathbf{x_i}\cdot\mathbf{x_j} + r)^d$, when $d=1$, this become the linear kernel,
+- ___Gaussian Radial Basis Function___: $K(\mathbf{x_i},\mathbf{x_j}) = \exp{\left(-\gamma\left\lVert \mathbf{x_i} - \mathbf{x_j} \right\rVert^2\right)}$, for $\gamma >0$,
+- ___Sigmoid Function___: $K(\mathbf{x_i},\mathbf{x_j}) =\tanh{\left(\kappa\mathbf{x}_i\cdot\mathbf{x_j} + c\right)}$, for $\kappa > 0$ and $c <0$.
+
+As shown in the figure, these kernel function produce different decision boundaries:
+
+<img width="892" height="800" alt="Image" src="https://github.com/user-attachments/assets/a7e4dbc3-acee-4686-8463-cf7de170c06f" />
