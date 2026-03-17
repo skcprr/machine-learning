@@ -41,7 +41,7 @@ So the optimization task can be formulated as:
 
 $$
 \underset{\textbf{w},b}{\min} 
-\{ \frac{1}{2}\left\lVert \mathbf{x} \right\rVert^2\} \\
+\{ \frac{1}{2}\left\lVert \mathbf{w} \right\rVert^2\} \\
 \text{subject to:} \\ y_i\left(\mathbf{w}^T\mathbf{x_i} + b \right)\geq 1, \forall i\in \{1,\ldots, n\}.
 $$
 
@@ -51,7 +51,7 @@ In the cases where the traning data is not linearly separable the parameter $\ze
 
 $$
 \underset{\textbf{w},b, \zeta}{\min} 
-\{ \frac{1}{2}\left\lVert \mathbf{x} \right\rVert^2 + C\sum_i^n\zeta_i \} \\
+\{ \frac{1}{2}\left\lVert \mathbf{w} \right\rVert^2 + C\sum_i^n\zeta_i \} \\
 \text{subject to:} \\ y_i\left(\mathbf{w}^T\mathbf{x_i} + b \right)\geq 1 - \zeta_i,  \zeta_i \geq 0,  \forall i\in \{1,\ldots, n\}.
 $$
 
@@ -87,9 +87,26 @@ $$
 Some common kernels include:
 
 - ___Polynomial___: $K(\mathbf{x_i},\mathbf{x_j}) = (\mathbf{x_i}\cdot\mathbf{x_j} + r)^d$, when $d=1$, this become the linear kernel,
-- ___Gaussian Radial Basis Function___: $K(\mathbf{x_i},\mathbf{x_j}) = \exp{\left(-\gamma\left\lVert \mathbf{x_i} - \mathbf{x_j} \right\rVert^2\right)}$, for $\gamma >0$,
+- ___Gaussian Radial Basis Function___: $K(\mathbf{x_i},\mathbf{x_j}) = \exp{(-\gamma\left\lVert \mathbf{x_i} - \mathbf{x_j} \right\rVert^2)}$, for $\gamma >0$,
 - ___Sigmoid Function___: $K(\mathbf{x_i},\mathbf{x_j}) =\tanh{\left(\kappa\mathbf{x}_i\cdot\mathbf{x_j} + c\right)}$, for $\kappa > 0$ and $c <0$.
 
 As shown in the figure, these kernel function produce different decision boundaries:
 
 <img width="892" height="800" alt="Image" src="https://github.com/user-attachments/assets/a7e4dbc3-acee-4686-8463-cf7de170c06f" />
+
+## Regression
+
+Support Vector Machines can also be applied in regression problems. In this context, the goal is to ensure that as many data points as possible lie within the margin. The width of the margin is controlled by the hyperparameter $\varepsilon$. The  optimization problem is formulated as:
+
+$$
+\min\{ \frac{1}{2}\left\lVert \mathbf{w} \right\rVert^2\} \\
+\text{subject to:} \|\mathbf{y}_i - \mathbf{w}_i\mathbf{x}_i - b \| \leq \varepsilon, \text{ }\forall i \in \{1, \ldots, n\}.
+$$
+
+The figure below shows  linear regression using SVM:
+
+<img width="535" height="432" alt="Image" src="https://github.com/user-attachments/assets/e19770da-c6c8-4755-b756-83910bddac93" />
+
+And the figure below illustrates nonlinear regression:
+
+<img width="535" height="432" alt="Image" src="https://github.com/user-attachments/assets/dab45d24-b720-42ec-a3c0-2bac7af5c88e" />
